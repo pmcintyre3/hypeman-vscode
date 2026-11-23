@@ -1,0 +1,110 @@
+{
+  "name": "hypeman-vscode",
+  "displayName": "Hype Man",
+  "description": "A passive little dose of encouragement whenever you save. Add and remove your own hype phrases.",
+  "version": "0.0.1",
+  "publisher": "pmcintyre3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pmcintyre3/hypeman-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "hypeman.hypeMe",
+        "title": "Hype Man: Hype Me"
+      },
+      {
+        "command": "hypeman.addPhrase",
+        "title": "Hype Man: Add Hype Phrase"
+      },
+      {
+        "command": "hypeman.removePhrase",
+        "title": "Hype Man: Remove Hype Phrase"
+      },
+      {
+        "command": "hypeman.resetPhrases",
+        "title": "Hype Man: Reset Hype Phrases to Default"
+      }
+    ],
+    "configuration": {
+      "title": "Hype Man",
+      "properties": {
+        "hypeman.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a hype phrase after a document is saved. The Hype Me command works regardless."
+        },
+        "hypeman.cooldownSeconds": {
+          "type": "number",
+          "default": 30,
+          "minimum": 0,
+          "description": "Minimum seconds between automatic hype phrases, to keep autosave and save-all quiet. 0 hypes on every save."
+        },
+        "hypeman.displaySeconds": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "description": "How long a hype phrase stays in the status bar."
+        },
+        "hypeman.phrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "Nice Job!",
+            "Way to go!",
+            "Wow, nice change!",
+            "So good!",
+            "Bravo!",
+            "You rock!",
+            "Well done!",
+            "I see what you did there!",
+            "Genius work!",
+            "Thumbs up!",
+            "Coding win!",
+            "FTW!",
+            "Yep!",
+            "Nnnnailed it!",
+            "Nice work!",
+            "You've got this.",
+            "Look at you go.",
+            "That's the stuff.",
+            "Saved, and looking good.",
+            "One step closer.",
+            "Keep it rolling.",
+            "Solid progress.",
+            "Well done, you.",
+            "Every save counts.",
+            "Steady hands, good code.",
+            "Onward!"
+          ],
+          "description": "The hype phrases to choose from. Use the add/remove commands or edit this list directly."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -watch -p .",
+    "test": "tsc -p . && node --test out/test/*.test.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
